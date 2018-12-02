@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+export default () => {
+  const [age, setAge] = useState(0);
+  const [name, setName] = useState("John");
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Name:
+            <input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+          <p>Age: {age}</p>
 
-export default App;
+          <button onClick={() => setAge(age + 1)}>Increase Age</button>
+
+          <p>
+            State: {name}, {age}
+          </p>
+        </div>
+      </header>
+    </div>
+  );
+};
